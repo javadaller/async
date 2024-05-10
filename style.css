@@ -4,22 +4,40 @@ body {
 }
 
 /* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
 .loader {
-    width: 80px;
-    aspect-ratio: 1;
-    border: 10px solid #000;
-    box-sizing: border-box;
-    background: 
-      radial-gradient(farthest-side at right,#fff 98%,#0000) 20% 50%/40% 80%,
-      radial-gradient(farthest-side at left ,#fff 98%,#0000) 80% 50%/40% 80%,
-      #000;
-    background-repeat: no-repeat;
-    filter: blur(4px) contrast(10); 
-    animation: l18 0.8s infinite alternate;
+    margin-left: 50%;
+    width: 40px;
+    height: 30px;
+    --c:no-repeat linear-gradient(#ffffff 0 0);
+    background:
+      var(--c) 0    100%/8px 30px,
+      var(--c) 50%  100%/8px 20px,
+      var(--c) 100% 100%/8px 10px;
+    position: relative;
+    clip-path: inset(-100% 0);
   }
-  @keyframes l18 {
-    0%,20% {background-position:20% 50%,80% 50%}
-    100%   {background-position:80% 50%,20% 50%}
+  .loader:before{
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    left: -16px;
+    top: 0;
+    animation: 
+      l5-1 2s   linear infinite,
+      l5-2 0.5s cubic-bezier(0,200,.8,200) infinite;
+  }
+  @keyframes l5-1 {
+    0%   {left:-16px;transform:translateY(-8px)}
+    100% {left:calc(100% + 8px);transform:translateY(22px)}
+  }
+  @keyframes l5-2 {
+    100% {top:-0.1px}
   }
 
 

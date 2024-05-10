@@ -61,7 +61,7 @@ async function randomQuote() {
 }
 
 async function exo3(data) {
-  await sleep(700)
+  await sleep(1200)
   console.log(data)
   const display=document.querySelector('#display3')
   
