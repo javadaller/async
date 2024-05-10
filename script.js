@@ -16,9 +16,9 @@ async function agify() {
 
     const fetchName = (name) => {
         const country=document.querySelector('#inputCountry').value
-        const apiKey = 'e05e4c5603c12b7eb9d1e101c88d3920'; // Votre clé d'API
+        
     
-        return fetch(`https://api.agify.io/?name=${name}&country_id=${country}&apikey=${apiKey}`);
+        return fetch(`https://api.agify.io/?name=${name}&country_id=${country}`);
     };
 
     fetchName(name)
@@ -41,9 +41,42 @@ function exo2(data) {
 }
 
 
+async function randomQuote() {
+  const display=document.querySelector('#display3')
+  display.innerHTML=''
+  const loader=document.querySelector('.loader')
+  loader.style.display='block'
+  const fetchName = () => {
+    return fetch('https://thatsthespir.it/api');
+  };
 
+  fetchName()
+    .then((response) => response.json())
+    .then((json) => {
+         exo3(json)
+    })
+    .catch((error) => {
+        console.log("There was an error!", error);
+    });
+}
 
+async function exo3(data) {
+  await sleep(700)
+  console.log(data)
+  const display=document.querySelector('#display3')
+  
 
+  const quote=createDiv('p',display,'"'+data.quote+'"','quote')
+  const author=createDiv('p',display,data.author,'author')
+  const photo=createDiv('img',display,null,'photo')
+  photo.src=data.photo
+  photo.alt='no image for this author'
+
+  const loader=document.querySelector('.loader')
+  loader.style.display='none'
+}
+
+randomQuote()
 
 
 // CREATE DIV
